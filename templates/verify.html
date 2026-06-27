@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify with Discord</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">&#9878;</div>
+            <h1>Discord Verification</h1>
+            <p>Click below to verify your identity with Discord.</p>
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+            <a href="{{ discord_url }}" class="btn discord-btn">&#10003; Login with Discord</a>
+            <p class="small">We collect your Discord ID, email, and IP address for verification.</p>
+        </div>
+    </div>
+</body>
+</html>
