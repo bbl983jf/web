@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container wide">
+        <h1>&#9878; Verification Dashboard</h1>
+        <div class="stats-row">
+            <div class="stat-box">Total: <strong>{{ total }}</strong></div>
+            <div class="stat-box">Today: <strong>{{ today }}</strong></div>
+            <div class="stat-box">
+                <form action="/api/search" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="Search ID / IP / email...">
+                </form>
+            </div>
+        </div>
+
+        <h2>Verified Users</h2>
+        <table>
+            <thead>
+                <tr><th>Discord ID</th><th>Tag</th><th>Email</th><th>IP</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+                {% for v in verifications %}
+                <tr>
+                    <td>{{ v[1] }}</td>
+                    <td>{{ v[2] }}</td>
+                    <td>{{ v[3] or '—' }}</td>
+                    <td class="mono">{{ v[4] or '—' }}</td>
+                    <td>{{ v[6][:19] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Activity Log</h2>
+        <table>
+            <thead>
+                <tr><th>User ID</th><th>Action</th><th>Detail</th><th>IP</th><th>Time</th></tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[2] }}</td>
+                    <td>{{ log[3][:60] }}</td>
+                    <td class="mono">{{ log[4] }}</td>
+                    <td>{{ log[5][:19] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
