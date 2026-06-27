@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified!</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card success">
+            <div class="logo success-icon">&#10003;</div>
+            <h1>Verification Successful</h1>
+            <p>Welcome, <strong>{{ tag }}</strong>!</p>
+            {% if email %}<p>Email: {{ email }}</p>{% endif %}
+            <p>You can close this page and return to Discord.</p>
+        </div>
+    </div>
+</body>
+</html>
